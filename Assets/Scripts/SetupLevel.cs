@@ -11,6 +11,8 @@ public class SetupLevel : MonoBehaviour {
     // Use this for initialization
 	void Start () 
     {
-        PhotonNetwork.Instantiate("Paddle", paddle.transform.position, paddle.transform.rotation, 0);
+        GameObject paddleInstance = PhotonNetwork.Instantiate("Paddle", paddle.transform.position, paddle.transform.rotation, 0);
+        Paddle paddleController = paddleInstance.GetComponent<Paddle>();
+        paddleController.enabled = true;
 	}
 }

@@ -41,7 +41,7 @@ public class NetworkHandler : PunBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        Debug.Log(PhotonNetwork.connectionStateDetailed.ToString());
+        //Debug.Log(PhotonNetwork.connectionStateDetailed.ToString());
 	}
 
     // Called once the player is in the lobby
@@ -69,7 +69,8 @@ public class NetworkHandler : PunBehaviour
     {
         // TODO find the map the room is using and load that
         //PhotonNetwork.room.customProperties.TryGetValue
-        GameObject.FindObjectOfType<LevelManager>().LoadLevel("DefaultLevel"); // THIS IS A HACK 
+        GameObject.FindObjectOfType<LevelManager>().LoadLevelMultiplayer("DefaultLevel"); // THIS IS A HACK 
+        Debug.Log(PhotonNetwork.room.name);
     }
 
     // update the room list with games that are available to join
