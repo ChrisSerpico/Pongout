@@ -70,7 +70,7 @@ public class NetworkHandler : PunBehaviour
         // TODO find the map the room is using and load that
         //PhotonNetwork.room.customProperties.TryGetValue
         GameObject.FindObjectOfType<LevelManager>().LoadLevelMultiplayer("DefaultLevel"); // THIS IS A HACK 
-        Debug.Log(PhotonNetwork.room.name);
+        //Debug.Log(PhotonNetwork.room.name);
     }
 
     // update the room list with games that are available to join
