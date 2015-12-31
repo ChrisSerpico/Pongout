@@ -20,21 +20,6 @@ public class LevelManager : MonoBehaviour {
         Application.LoadLevel(index);
     }
 
-    // Handles loading levels while connected to server
-    public void LoadLevelMultiplayer(string name)
-    {
-        Debug.Log("Multiplayer level load requested for: " + name);
-        PrepareToLoad();
-        PhotonNetwork.LoadLevel(name);
-    }
-
-    public void LoadLevelMultiplayer(int index)
-    {
-        Debug.Log("Multiplayer level load requested for level with index " + index);
-        PrepareToLoad();
-        PhotonNetwork.LoadLevel(index);
-    }
-
     // Load the next level in the build list
     public void LoadNextLevel()
     {
