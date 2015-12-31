@@ -2,8 +2,27 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
-    //TODO make this a singleton
+    // NOTE TO SELF: SINGLETONS BREAK UNITY BUTTONS UNLESS 
+    // YOU WRITE A SCRIPT FOR EACH ONE
+    /*
+    // Singleton instance
+    static LevelManager instance;
 
+    // Destroy other instances of this object 
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("Duplicate Level Manager self-destructing");
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            GameObject.DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+    }
+    */
 
     // Handles loading levels
 	public void LoadLevel(string name)
@@ -35,7 +54,17 @@ public class LevelManager : MonoBehaviour {
     
     private void PrepareToLoad()
     {
+        // anytime we load a new level reset the number of breakable bricks to 0
+        Brick.breakableCount = 0;
+    }
 
+    // if the breakable count is less than 1, load the next level
+    public void BrickDestroyed()
+    {
+        if (Brick.breakableCount <= 0)
+        {
+            LoadNextLevel();
+        }
     }
 
 
