@@ -14,6 +14,12 @@ public class Ball : MonoBehaviour {
 
     // whether the game has started 
     private bool hasStarted = false;  
+
+    // the number of lives this ball currently has
+    public int lives;
+
+    // reference to level manager
+    private LevelManager levelManager;
     
     // Use this for initialization
 	void Start () 
@@ -21,6 +27,9 @@ public class Ball : MonoBehaviour {
 	    // find the paddle
         paddle = GameObject.FindObjectOfType<Paddle>();
         paddleToBallVector = this.transform.position - paddle.transform.position;
+
+        // find the level manager
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -55,6 +64,19 @@ public class Ball : MonoBehaviour {
         if (hasStarted)
         {
             GetComponent<Rigidbody2D>().velocity = tweak;
+        }
+    }
+
+    // Lose a life, if there are fewer than 0 lives left, go to lose screen
+    public void LoseLife()
+    {
+        if (hasStarted && lives > 0)
+        {
+            lives--;
+        }
+        else
+        {
+            levelManager.LoadLevel("LoseScreen");
         }
     }
 }

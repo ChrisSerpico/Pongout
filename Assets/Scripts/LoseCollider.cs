@@ -3,15 +3,11 @@ using System.Collections;
 
 public class LoseCollider : MonoBehaviour {
 
-    private LevelManager levelManager;
-
-    void Start()
-    {
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
-    }
-
     void OnTriggerEnter2D(Collider2D collider)
     {
-        levelManager.LoadLevel("LoseScreen");
+        if (collider.tag == "Ball")
+        {
+            collider.GetComponent<Ball>().LoseLife();
+        }
     }
 }
