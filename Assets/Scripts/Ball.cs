@@ -70,9 +70,11 @@ public class Ball : MonoBehaviour {
     // Lose a life, if there are fewer than 0 lives left, go to lose screen
     public void LoseLife()
     {
-        if (hasStarted && lives > 0)
+        if (lives >= 1)
         {
             lives--;
+            hasStarted = false;
+            Debug.Log(lives);
         }
         else
         {
