@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Ball : MonoBehaviour {
 
@@ -20,6 +21,9 @@ public class Ball : MonoBehaviour {
 
     // reference to level manager
     private LevelManager levelManager;
+
+    // reference to life counter
+    public Text counter;
     
     // Use this for initialization
 	void Start () 
@@ -30,6 +34,9 @@ public class Ball : MonoBehaviour {
 
         // find the level manager
         levelManager = GameObject.FindObjectOfType<LevelManager>();
+
+        // change number of lives
+        counter.text = "Lives: " + lives;
 	}
 	
 	// Update is called once per frame
@@ -73,6 +80,7 @@ public class Ball : MonoBehaviour {
         if (lives >= 1)
         {
             lives--;
+            counter.text = "Lives: " + lives;
             hasStarted = false;
             Debug.Log(lives);
         }
