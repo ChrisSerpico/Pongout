@@ -45,6 +45,12 @@ public class LevelManager : MonoBehaviour {
         LoadLevel(Application.loadedLevel + 1);
     }
 
+    // Load the first level, and do extra setup
+    public void LoadFirstLevel()
+    {
+        LoadLevel("Level_01_sp");
+    }
+
     // Attempt to exit the game
     public void QuitRequest()
     {

@@ -16,8 +16,10 @@ public class Ball : MonoBehaviour {
     // whether the game has started 
     private bool hasStarted = false;  
 
+    // how many lives the ball starts with
+    private const int startingLives = 3;
     // the number of lives this ball currently has
-    public int lives;
+    public static int lives = startingLives;
 
     // reference to level manager
     private LevelManager levelManager;
@@ -86,7 +88,14 @@ public class Ball : MonoBehaviour {
         }
         else
         {
+            ResetLives();
             levelManager.LoadLevel("LoseScreen");
         }
+    }
+
+    // reset lives to the starting number of lives
+    public void ResetLives()
+    {
+        lives = startingLives;
     }
 }
