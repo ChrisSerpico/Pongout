@@ -17,9 +17,9 @@ public class Ball : MonoBehaviour {
     private bool hasStarted = false;  
 
     // how many lives the ball starts with
-    private const int startingLives = 3;
+    private const int STARTING_LIVES = 3;
     // the number of lives this ball currently has
-    public static int lives = startingLives;
+    public static int lives = STARTING_LIVES;
 
     // reference to level manager
     private LevelManager levelManager;
@@ -94,8 +94,8 @@ public class Ball : MonoBehaviour {
     }
 
     // reset lives to the starting number of lives
-    public void ResetLives()
+    public static void ResetLives()
     {
-        lives = startingLives;
+        lives = STARTING_LIVES;
     }
 }

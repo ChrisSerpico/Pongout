@@ -30,6 +30,7 @@ public class LevelManager : MonoBehaviour {
         Debug.Log("Level load requested for: " + name);
         PrepareToLoad();
         Application.LoadLevel(name);
+        LoadCleanup();
     }
 
     public void LoadLevel(int index)
@@ -37,6 +38,7 @@ public class LevelManager : MonoBehaviour {
         Debug.Log("Level load requested for level with index " + index);
         PrepareToLoad();
         Application.LoadLevel(index);
+        LoadCleanup();
     }
 
     // Load the next level in the build list
@@ -58,11 +60,21 @@ public class LevelManager : MonoBehaviour {
         Application.Quit();
     }
     
+    // Methods for loading and cleaning up after loading
     private void PrepareToLoad()
     {
         // anytime we load a new level reset the number of breakable bricks to 0
         Brick.breakableCount = 0;
     }
+
+    private void LoadCleanup()
+    {
+        if (Application.loadedLevelName == "Win Screen" || Application.loadedLevelName == "Lose Screen")
+        {
+            Ball.ResetLives();
+        }
+    }
+
 
     // if the breakable count is less than 1, load the next level
     public void BrickDestroyed()
