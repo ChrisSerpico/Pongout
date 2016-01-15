@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
     // NOTE TO SELF: SINGLETONS BREAK UNITY BUTTONS UNLESS 
@@ -23,6 +24,15 @@ public class LevelManager : MonoBehaviour {
         }
     }
     */
+
+    // reference to block counter
+    private GameObject counter;
+
+    private void Start()
+    {
+        counter = GameObject.Find("Block Counter");
+        counter.GetComponent<Text>().text = "Blocks Left: " + Brick.breakableCount;
+    }
 
     // Handles loading levels
 	public void LoadLevel(string name)
@@ -83,6 +93,8 @@ public class LevelManager : MonoBehaviour {
         {
             LoadNextLevel();
         }
+
+        counter.GetComponent<Text>().text = "Blocks Left: " + Brick.breakableCount;
     }
 
 
